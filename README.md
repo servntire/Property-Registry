@@ -378,8 +378,7 @@ mark new owner address as current owner
 **Output**
 
 change property value
-
-**7.Get the property details.**
+**8.Get the property details.**
 
 **parameters**
 
@@ -389,7 +388,7 @@ change property value
 
 Status, propoerty value, property owner address
 
-**8.Add new user.**
+**9.Add new user.**
 
 **parameters**
 
@@ -404,7 +403,7 @@ Status, propoerty value, property owner address
 **Output**
 mark address as user
 
-**9.Add new admin.**
+**10.Add new admin.**
 
 **parameters**
 
@@ -420,7 +419,7 @@ mark address as user
 
 mark address as Admin
 
-**10.Add new SuperAdmin**
+**11.Add new SuperAdmin**
 
 **parameters**
 
@@ -436,7 +435,7 @@ mark address as Admin
 
 mark address as SuperAdmin
 
-**11. Approve Pending User.**
+**12. Approve Pending User.**
 
 **parameters**
 
