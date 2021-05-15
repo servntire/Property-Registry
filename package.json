@@ -1,0 +1,9 @@
+{
+  "name": "property-registry-v2",
+  "version": "0.1.0",
+  "description": "Property Registry POC V2",
+  "main": "index.js",
+  "repository": "https://github.com/servntire/Property-Registry",
+  "author": "Servntire",
+  "license": "MIT"
+}
