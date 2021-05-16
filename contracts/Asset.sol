@@ -1,47 +1,62 @@
-pragma solidity ^0.4.4;
 
-contract asset {
+pragma solidity >=0.7.0 <0.9.0;
+
+/**
+ * @title Asset
+ * @dev Store & retrieve value of a property
+ */
+
+contract Asset {
 
     address public creatorAdmin;
 	enum Status { NotExist, Pending, Approved, Rejected }
+    enum Role {Visitor, User, Admin, SuperAdmin}
 
+    // Struct to store all property related details
 	struct PropertyDetail {
 		Status status;
 		uint value;
 		address currOwner;
 	}
 
-	// Dictionary of all the properties, mapped using their { propertyId: PropertyDetail } pair.
-	mapping(uint => PropertyDetail) public properties;
-	mapping(uint => address) public propOwnerChange;
 
-    mapping(address => int) public users;
-    mapping(address => bool) public verifiedUsers;
+    
+	mapping(uint => PropertyDetail) public properties; // Stores all properties propId -> property Detail
+	mapping(uint => address) public propOwnerChange; // Keeps track of property owner propId -> Owner Address
+    mapping(address => int) public userRoles; // Keeps track of user roles
+    mapping(address => bool) public verifiedUsers;// Keeps track of verified user, userId -> verified (true / false)
 
+
+    // Modifier to ensure only the property owner access
+    // a specific property
 	modifier onlyOwner(uint _propId) {
 		require(properties[_propId].currOwner == msg.sender);
 		_;
 	}
 
+    // Modifier to ensure only the verified user access
+    // a specific property
 	modifier verifiedUser(address _user) {
 	    require(verifiedUsers[_user]);
 	    _;
 	}
 
+    // Modifier to ensure only the verified admin access a function
 	modifier verifiedAdmin() {
-		require(users[msg.sender] >= 2 && verifiedUsers[msg.sender]);
+		require(userRoles[msg.sender] >= Role.Admin && verifiedUsers[msg.sender]);
 		_;
 	}
 
+     // Modifier to ensure only the verified super admin admin access a function
 	modifier verifiedSuperAdmin() {
-	    require(users[msg.sender] == 3 && verifiedUsers[msg.sender]);
+	    require(userRoles[msg.sender] == Role.SuperAdmin && verifiedUsers[msg.sender]);
 	    _;
 	}
 
-	// Initializing the User Contract.
-	function asset() {
+	// Initializing the Contract.
+	constructor asset() public {
 		creatorAdmin = msg.sender;
-		users[creatorAdmin] = 3;
+		userRoles[creatorAdmin] = Role.SuperAdmin;
 		verifiedUsers[creatorAdmin] = true;
 	}
 
@@ -95,31 +110,31 @@ contract asset {
 
 	// Add new user.
 	function addNewUser(address _newUser) verifiedAdmin returns (bool) {
-	    require(users[_newUser] == 0);
+	    require(userRoles[_newUser] == Role.Visitor);
 	    require(verifiedUsers[_newUser] == false);
-	    users[_newUser] = 1;
+	    userRoles[_newUser] = Role.User;
 	    return true;
 	}
 
 	// Add new Admin.
 	function addNewAdmin(address _newAdmin) verifiedSuperAdmin returns (bool) {
-	    require(users[_newAdmin] == 0);
+	    require(userRoles[_newAdmin] == Role.Visitor);
 	    require(verifiedUsers[_newAdmin] == false);
-	    users[_newAdmin] = 2;
+	    userRoles[_newAdmin] = Role.Admin;
 	    return true;
 	}
 
 	// Add new SuperAdmin.
 	function addNewSuperAdmin(address _newSuperAdmin) verifiedSuperAdmin returns (bool) {
-	    require(users[_newSuperAdmin] == 0);
+	    require(userRoles[_newSuperAdmin] == Role.Visitor);
 	    require(verifiedUsers[_newSuperAdmin] == false);
-	    users[_newSuperAdmin] = 3;
+	    userRoles[_newSuperAdmin] = Role.SuperAdmin;
 	    return true;
 	}
 
 	// Approve User.
 	function approveUsers(address _newUser) verifiedSuperAdmin returns (bool) {
-	    require(users[_newUser] != 0);
+	    require(userRoles[_newUser] != Role.Visitor);
 	    verifiedUsers[_newUser] = true;
 	    return true;
 	}
