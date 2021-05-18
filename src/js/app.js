@@ -431,8 +431,12 @@ App = {
         console.log(error);
       }
       App.contracts.asset.methods.approveProperty(
-        PropId,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        PropId) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
         function (error, result) {
           if (!error) console.log(JSON.stringify(result));
           else console.error(error);
@@ -448,8 +452,12 @@ App = {
         console.log(error);
       }
       App.contracts.asset.methods.rejectProperty(
-        PropId,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        PropId).send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
         function (error, result) {
           if (!error) console.log(JSON.stringify(result));
           else console.error(error);
@@ -467,8 +475,12 @@ App = {
       }
       App.contracts.asset.methods.changeOwnership(
         PropId,
-        NewOwner,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        NewOwner) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
         function (error, result) {
           if (!error) console.log(JSON.stringify(result));
           else console.error(error);
@@ -484,8 +496,12 @@ App = {
         console.log(error);
       }
       App.contracts.asset.methods.approveChangeOwnership(
-        PropId,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        PropId) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
         function (error, result) {
           if (!error) console.log(JSON.stringify(result));
           else console.error(error);
@@ -503,8 +519,12 @@ App = {
       }
       App.contracts.asset.methods.changeValue(
         PropId,
-        NewVal,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        NewVal) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
         function (error, result) {
           if (!error) console.log(JSON.stringify(result));
           else console.error(error);
@@ -521,8 +541,10 @@ App = {
       }
 
       App.contracts.asset.methods.getPropertyDetails(
-        PropId,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        PropId).call(
+			{
+			  from: accounts[0]
+			},
         function (error, result) {
           if (!error) {
             console.log(JSON.stringify(result));
@@ -559,7 +581,12 @@ App = {
               $(".sec3").html("");
 
               App.contracts.asset.methods.propOwnerChange(
-                PropId,
+                PropId) .send(
+					{
+					  from: accounts[0],
+					  gas: 1000000,
+					  gasPrice: web3.utils.toWei("20", "gwei"),
+					},
                 function (error, result) {
                   if (!error) {
                     if (
@@ -604,8 +631,12 @@ App = {
       }
       if ($("#adduser #PropAddUserrole").val() == "User") {
         App.contracts.asset.methods.addNewUser(
-          useraddress,
-          { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+          useraddress) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
           function (error, result) {
             if (!error) console.log(result);
             else console.error(error);
@@ -613,8 +644,12 @@ App = {
         );
       } else if ($("#adduser #PropAddUserrole").val() == "Admin") {
         App.contracts.asset.methods.addNewAdmin(
-          useraddress,
-          { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+          useraddress) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
           function (error, result) {
             if (!error) console.log(JSON.stringify(result));
             else console.error(error);
@@ -622,8 +657,12 @@ App = {
         );
       } else if ($("#adduser #PropAddUserrole").val() == "SuperAdmin") {
         App.contracts.asset.methods.addNewSuperAdmin(
-          useraddress,
-          { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+          useraddress) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
           function (error, result) {
             if (!error) console.log(JSON.stringify(result));
             else console.error(error);
@@ -640,8 +679,12 @@ App = {
         console.log(error);
       }
       App.contracts.asset.methods.approveUsers(
-        useraddress,
-        { gas: 1000000, gasPrice: web3.utils.toWei("20", "gwei") },
+        useraddress) .send(
+			{
+			  from: accounts[0],
+			  gas: 1000000,
+			  gasPrice: web3.utils.toWei("20", "gwei"),
+			},
         function (error, result) {
           if (!error) console.log(JSON.stringify(result));
           else console.error(error);
