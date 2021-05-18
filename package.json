@@ -9,7 +9,8 @@
   "scripts": {
     "prettier": "prettier --write 'contracts/**/Asset.sol'",
     "compile": "truffle compile",
-    "deploy:ropsten": "truffle migrate --network ropsten",
+    "deploy:ropsten": "truffle migrate --network ropsten --reset",
+    "deploy:rinkeby": "truffle migrate --network rinkeby --reset",
     "deploy": "truffle migrate",
     "serve": "serve src/"
   },
