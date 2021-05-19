@@ -185,78 +185,56 @@ The **web3js framework **works in the following way:
 
 **Steps:**
 
+**Pre requistes**
+- Nodejs v12+
+- Docker
+- ganache-cli (npm i -g ganache-cli)
+- truffle (npm i -g truffle)
+
 **Install MetaMask**
 
 1. Go to [https://metamask.io/](https://metamask.io/)
 and install the **browser plugin**.
 
 2. Setup a **password** and open the wallet. Select the network
-as ‘**Rinkeby Test Network**’.
+as ‘**Rinkeby Test Network**’ / ‘**Ropsten Test Network**’  .
 
 3. Click on ‘**CREATE ACCOUNT**’ to create a new wallet
-accout and click ‘**Copy Address to clipboard**’ to copy your
+account and click ‘**Copy Address to clipboard**’ to copy your
 **public address** for the wallet.
 
 4. Go to [https://faucet.rinkeby.io/](https://faucet.rinkeby.io/)
 to get free test ether to the address. Check your account on metamask
-and verify the **balance**.
+and verify the **balance**. You can also make use of ropsten network, there will be a
+faucet option available in metamask to get test ethereum.
 
 5. Repeat steps 3 and 4 to create more accounts.
 
 **Deploying contract**
 
-1. Go to [http://remix.ethereum.org/](http://remix.ethereum.org/)
-and **upload** your contract file (**asset.sol**)
+1.Create .env file with the following format in the root of the cloned repo
 
-2. **Compile** the code. Make sure you’ve slected ‘**asset.sol**’
-in the dropdown next to details. Ignore warnings.
+```
+INFURA_KEY="<paste you infura key>"
+MNEMONIC="<Mnemonics>"
+```
+Please make sure that addresses generated from the mnemonics have some funds in the network you are trying to deploy also is the same mnemonics loaded in metamask for the ease of testing
 
-3. Go to the **run** tab. Make sure ‘**Environment**’ is
-set as ‘**Injected Web3** ’ and shows ‘**rinkeby**’.
-Make sure ‘**Account**’ shows your wallet address in metamask.
-This is the account from which the contract will be delpoyed. ‘Gas
-limit’ and ‘Value’ has little importance on testnet but make
-sure to pay enough gas on livenet.
+2. Execute "npm run compile"
 
-4. Make sure ‘**User**’ is shown in the dropdown above
-‘**create**’
+3. Execute "npm run deploy:ropsten" // or rinkeby
 
-(If any of the above steps fail, reload the browser)
+4. Your contract will get deployed to the network
 
-5. click ‘**create**’ and a **popup** will appear on
-metamask. Open metamask and **Submit** the transaction. Set a
-reasonable ‘Gas limit’ and ‘Gas Price’  according to network.
-
-6. Click on the transaction to go to
-[https://rinkeby.etherscan.io/tx/](https://rinkeby.etherscan.io/tx/)
-to know the status of transaction. If it is a **success**, your
-contract is deployed. In the ‘**To**’ section **“[Contract
-0x0000000000000000000000000000000000
-Created]”** will be shown. This is your **contract address**.
-Copy it. Click on it to know about the incoming transaction to the
-contract.
-
-Now the contract is deployed on the rinkeby network. You can
-access it using a web app.
-
-**Web App**
-
-1. Open  **src/js/app.js** file. This is the javascript file
+5. Open  **src/js/app.js** file. This is the javascript file
 that interacts with the contract.
 
-2. Paste your contract address replacing  '**contract_address**'
-in **“web3.eth.contract(abi).at('contract_address');”**
+6. Paste your contract address replacing  '**contract_address**'
+in **“web3.eth.Contract(abi, <contract-addess>”)
 
-3. Go to remix page.
-In the **compile** section go to **details** tab. In the **ABI**
-section click on copy button to copy your ABI code.
+7. Run "npm run serve" to serve the web app locally
 
-4. Go to 
-**src/js/app.js** file and paste it replacing ‘**abi_array**’
-in   **var abi = abi_array ;**
-
-5. Open
-**src/index.html** to open the web app.
+8. Connect your metamask to the web app and interact with the Dapp
 
 **Interacting
 on web App**
@@ -291,7 +269,7 @@ perform certain operations.
 
 **parameters**
 
-- CreateProperty- property Id, propoerty value, property owner address
+- CreateProperty- property Id, property value, property owner address
 
 **prerequisites**
 
@@ -300,7 +278,7 @@ perform certain operations.
 
 **Output**
 
- mark property Id, Status as Pending, propoerty value, property owner address
+ mark property Id, Status as Pending, property value, property owner address
 
 **3.Approve the new Property.**
 
@@ -368,7 +346,7 @@ mark new owner address as current owner
 
 **parameters**
 
-- changeValue- propoerty Id, new property value
+- changeValue- property Id, new property value
 
 **prerequisites**
 
@@ -383,11 +361,11 @@ change property value
 
 **parameters**
 
-- GetPropertyDetails- propoerty Id
+- GetPropertyDetails- property Id
 
 **Output**
 
-Status, propoerty value, property owner address
+Status, property value, property owner address
 
 **9.Add new user.**
 

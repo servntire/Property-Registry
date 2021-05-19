@@ -369,7 +369,7 @@ App = {
 
     App.contracts.asset = new web3.eth.Contract(
       abi,
-      "0x7E43155C4F996eCca78Be18182FA39AA961e0177"
+      "<paste your deployed contact address here>"
     );
 
     return App.bindEvents();
