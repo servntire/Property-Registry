@@ -190,6 +190,7 @@ The **web3js framework **works in the following way:
 - Docker
 - ganache-cli (npm i -g ganache-cli)
 - truffle (npm i -g truffle)
+- yarn (npm i -g yarn)
 
 **Install MetaMask**
 
@@ -220,21 +221,23 @@ MNEMONIC="<Mnemonics>"
 ```
 Please make sure that addresses generated from the mnemonics have some funds in the network you are trying to deploy also is the same mnemonics loaded in metamask for the ease of testing
 
-2. Execute "npm run compile"
+2. Execute "yarn install
 
-3. Execute "npm run deploy:ropsten" // or rinkeby
+3. Execute "yarn compile"
 
-4. Your contract will get deployed to the network
+4. Execute "yarn deploy:ropsten" // or rinkeby
 
-5. Open  **src/js/app.js** file. This is the javascript file
+5. Your contract will get deployed to the network
+
+6. Open  **src/js/app.js** file. This is the javascript file
 that interacts with the contract.
 
-6. Paste your contract address replacing  '**contract_address**'
+7. Paste your contract address replacing  '**contract_address**'
 in **“web3.eth.Contract(abi, <contract-addess>”)
 
-7. Run "npm run serve" to serve the web app locally
+8. Run "yarn serve" to serve the web app locally
 
-8. Connect your metamask to the web app and interact with the Dapp
+9. Connect your metamask to the web app and interact with the Dapp
 
 **Interacting
 on web App**
