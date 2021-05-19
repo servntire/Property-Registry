@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Asset Registry</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+  <div class="container-fluid">
+    <header>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="https://servntire.com/wp-content/uploads/2018/01/logo@2x.png" width="100" alt="Logo" title="Logo" />
+        </div>
+        <div class="col-md-6 text-right">
+          <ul>
+            <li><a href="index.html">Create Property</a></li>
+            <li><a href="property.html">View Property</a></li>
+            <li><a href="user.html">Add User</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="col-md-6 offset-md-0">
+        <form action="#" id = "PropSearchform">
+          <div class="form-group">
+            <label>Get Property Details</label>
+            <input type="text" class="form-control" id="PropSearch" name="PropSearch" placeholder="Enter Property Id">
+
+
+          </div>
+
+        </form>
+        <button type="submit"  class="btn btn-primary" id="btn-PropSearch"  form="form1" value="Submit">Search Property</button>
+
+      </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Property ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">Value</th>
+              <th scope="col">Current Owner</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td id="resultPropID"></td>
+              <td id="resultPropStatus"></td>
+              <td id="resultPropValue"></td>
+              <td id="resultPropOwner"></td>
+              <td id="resultPropFunc1"></td>
+              <td id="resultPropFunc2"></td>
+            </tr>
+
+          </tbody>
+        </table>
+        <div>
+    <div style="float: left; width: 35%" class="sec1">
+
+<!--     <form action="#" id ="PropReqChangeform"><div class="form-group"><label>Request Change of Ownership</label><input type="text" class="form-control" id="PropReqChange" name="PropReqChange" placeholder="Enter New Owner Address"></div></form><button type="submit"  class="btn btn-primary" id="btn-PropReqChange"  form="form1" value="Submit">Request</button>
+-->
+    </div>
+    <div style="float: left; width: 35%" class="sec2">
+
+<!--     <label>Accept Change of Ownership</label><button type="submit"  class="btn btn-primary" id="btn-PropAcptChange" value="Submit">Accept</button>
+-->
+    </div>
+    <div style="float: left; width: 30%" class="sec3">
+<!--     <form action="#" id="PropValChangeform"><div class="form-group"><label>Change Property Value/Price</label><input type="text" class="form-control" id="PropValChange" name="PropValChange" placeholder="Enter New Value/Price"></div></form><button type="submit"  class="btn btn-primary" id="btn-PropValChange"  form="form1" value="Submit">Change</button>
+-->
+    </div>
+</div>
+      </div>
+    </div>
+  </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        <script src="js/app.js"></script>
+      </body>
+    </html>

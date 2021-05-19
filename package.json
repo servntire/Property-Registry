@@ -1,0 +1,27 @@
+{
+  "name": "property-registry-v2",
+  "version": "0.1.0",
+  "description": "Property Registry POC V2",
+  "main": "index.js",
+  "repository": "https://github.com/servntire/Property-Registry",
+  "author": "Servntire",
+  "license": "MIT",
+  "scripts": {
+    "prettier": "prettier --write 'contracts/**/Asset.sol'",
+    "compile": "truffle compile",
+    "deploy:ropsten": "truffle migrate --network ropsten --reset",
+    "deploy:rinkeby": "truffle migrate --network rinkeby --reset",
+    "deploy": "truffle migrate",
+    "serve": "serve src/"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.10",
+    "serve": "^11.3.2",
+    "truffle": "^5.3.6"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "dotenv": "^9.0.2"
+  }
+}
